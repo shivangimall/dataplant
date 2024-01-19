@@ -33,7 +33,7 @@ const scheduleSchema = mongoose.Schema({
             //default is daily if not provided
         },
         Time:{
-            type:Date,
+            type:String,
             required:true
         }
 })
