@@ -58,7 +58,12 @@ exports.getScheduleById = async(req,res)=>{
     const data  = await schedule.findById(id);
 
     console.log(data,"data")
-
+        
+    if(!data)
+    {
+        res.json("No data found with the given id")
+    }
+    else
     res.status(200).json(data);
     }catch(err)
     {
@@ -79,7 +84,9 @@ const {id} = req.params;
 
 const data  = await schedule.findById(id);
 
-console.log(data);
+// console.log(data);
+
+console.log(Repeat.length,"repaet field");
 
 const ans = await schedule.findOneAndUpdate({_id:id},{$set:
     {
@@ -87,13 +94,14 @@ const ans = await schedule.findOneAndUpdate({_id:id},{$set:
     Description:Description?Description:data.Description,
     Subject:Subject?Subject:data.Subject,
     Frequency:Frequency?Frequency:data.Frequency,
-    Repeat:Repeat?Repeat:data.Repeat,
+    Repeat:Repeat.length>0?Repeat:data.Repeat,
     Time:Time?Time:data.Time
    }
     },{new:true});
 
+    console.log(ans,"ans");
   
-res.json(ans);
+    res.json(ans);
     }catch(err)
     {
         res.json(err);

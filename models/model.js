@@ -28,7 +28,7 @@ const scheduleSchema = mongoose.Schema({
 
         },
         Repeat:{
-            type:String,
+            type:[],
             required:true
             //default is daily if not provided
         },
