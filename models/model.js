@@ -24,16 +24,17 @@ const scheduleSchema = mongoose.Schema({
             type:String,
             enum:["Daily","Weekly","Monthly"],
             default:"Daily",
+            required:true
 
         },
         Repeat:{
-            type:[],
+            type:String,
+            required:true
             //default is daily if not provided
         },
         Time:{
             type:Date,
-
-
+            required:true
         }
 })
 
